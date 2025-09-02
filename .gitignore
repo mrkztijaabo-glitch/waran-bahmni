@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+
+# Docker override
+Dockerfile*
+docker-compose.override.yml
+
+# System files
+.DS_Store
