@@ -1,0 +1,40 @@
+{
+  "name": "Auto Redeploy",
+  "nodes": [
+    {
+      "parameters": {
+        "owner": "mrkztijabo-glitch",
+        "repository": "waran-bahmni",
+        "events": [
+          "push"
+        ]
+      },
+      "name": "GitHub Trigger",
+      "type": "n8n-nodes-base.githubTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "/* Example: trigger auto-deploy pipeline or run docker-compose pull and restart */\nreturn items;"
+      },
+      "name": "Trigger Redeploy",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "GitHub Trigger": {
+      "main": [
+        [
+          {
+            "node": "Trigger Redeploy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
