@@ -1,0 +1,37 @@
+{
+  "roles": {
+    "admin": {
+      "description": "System administrator with full privileges.",
+      "permissions": [
+        "manage_users",
+        "view_all_records",
+        "manage_system_settings"
+      ]
+    },
+    "doctor": {
+      "description": "Medical doctor with access to patient records and orders.",
+      "permissions": [
+        "view_patient_records",
+        "create_encounters",
+        "write_prescriptions",
+        "order_labs"
+      ]
+    },
+    "nurse": {
+      "description": "Nurse with limited write access.",
+      "permissions": [
+        "view_patient_records",
+        "record_vitals",
+        "administer_medication"
+      ]
+    },
+    "pharmacist": {
+      "description": "Pharmacist manages medications.",
+      "permissions": [
+        "view_prescriptions",
+        "dispense_medication",
+        "manage_inventory"
+      ]
+    }
+  }
+}
