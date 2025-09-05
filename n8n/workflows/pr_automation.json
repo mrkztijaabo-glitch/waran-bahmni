@@ -1,0 +1,40 @@
+{
+  "name": "PR Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "owner": "mrkztijabo-glitch",
+        "repository": "waran-bahmni",
+        "events": [
+          "pull_request"
+        ]
+      },
+      "name": "GitHub Trigger",
+      "type": "n8n-nodes-base.githubTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "/* Example: automatically add labels or comment on PR */\nreturn items;"
+      },
+      "name": "Process PR",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "GitHub Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process PR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
