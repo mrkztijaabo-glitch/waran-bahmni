@@ -1,0 +1,58 @@
+{
+  "name": "Appointment Reminder",
+  "nodes": [
+    {
+      "parameters": {
+        "schedule": "0 9 * * *"
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "/* Query appointments scheduled for the next day and send reminders */\nreturn items;"
+      },
+      "name": "Fetch Appointments",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "message": "Hello {{ $json.patientName }}, you have an appointment scheduled for {{ $json.appointmentDate }}.",
+        "to": "={{ $json.patientPhone }}",
+        "from": "YourHospital"
+      },
+      "name": "Send SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Fetch Appointments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Appointments": {
+      "main": [
+        [
+          {
+            "node": "Send SMS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
