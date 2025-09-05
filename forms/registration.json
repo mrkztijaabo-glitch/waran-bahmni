@@ -1,0 +1,11 @@
+{
+  "form_name": "Patient Registration",
+  "fields": [
+    {"id": "patient_name", "label": "Patient Name", "type": "string", "required": true},
+    {"id": "patient_id", "label": "Patient ID", "type": "string", "required": true},
+    {"id": "date_of_birth", "label": "Date of Birth", "type": "date", "required": true},
+    {"id": "gender", "label": "Gender", "type": "enum", "options": ["Male", "Female", "Other"], "required": true},
+    {"id": "address", "label": "Address", "type": "string"},
+    {"id": "phone", "label": "Contact Number", "type": "string"}
+  ]
+}
