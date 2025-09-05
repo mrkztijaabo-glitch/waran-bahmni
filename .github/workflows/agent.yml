@@ -1,0 +1,26 @@
+name: Agent Mode Integration
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run ChatGPT Agent Integration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "Running ChatGPT Agent integration..."
+          # Insert agent automation tasks here
+      - name: Enable auto-merge for PRs to main if CI passes
+        if: github.ref == 'refs/heads/staging'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          repository: ${{ github.repository }}
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
