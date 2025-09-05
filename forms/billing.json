@@ -1,0 +1,10 @@
+{
+  "bill_id": "",
+  "patient_id": "",
+  "date": "",
+  "items": [
+    {"item_name": "", "amount": 0.0}
+  ],
+  "total_amount": 0.0,
+  "status": "Unpaid"
+}
