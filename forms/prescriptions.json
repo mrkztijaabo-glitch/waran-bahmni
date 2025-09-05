@@ -1,0 +1,9 @@
+{
+  "prescription_id": "",
+  "patient_id": "",
+  "date": "",
+  "medications": [
+    {"drug_name": "", "dosage": "", "frequency": "", "duration": ""}
+  ],
+  "notes": ""
+}
