@@ -33,5 +33,35 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8069"]
       interval: 30s
+
+         ysql:
+    image: mysql:5.7
+    container_name: mysql
+    env_file: .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 3s
       timeout: 10s
       retries: 5
+
+  p ostgres:
+    image: postgres:13
+    container_name: postgres
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "$POSTGRES_USER", "-d", "$POSTGRES_DB"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+lumes:
+    mysql_data:
+    postgres_data:
