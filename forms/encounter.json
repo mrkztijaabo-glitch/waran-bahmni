@@ -1,0 +1,10 @@
+{
+  "form_name": "Encounter",
+  "fields": [
+    {"id": "encounter_id", "label": "Encounter ID", "type": "string", "required": true},
+    {"id": "patient_id", "label": "Patient ID", "type": "string", "required": true},
+    {"id": "date", "label": "Date", "type": "datetime", "required": true},
+    {"id": "type", "label": "Encounter Type", "type": "enum", "options": ["OPD", "Inpatient", "Emergency"], "required": true},
+    {"id": "notes", "label": "Clinical Notes", "type": "text"}
+  ]
+}
