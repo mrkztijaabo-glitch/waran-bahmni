@@ -1,0 +1,10 @@
+{
+  "name": "lab_results_notification",
+  "language": "en",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hello {{patient_name}}, your lab results are ready. Please log into the portal or visit the clinic to discuss them with your doctor."
+    }
+  ]
+}
