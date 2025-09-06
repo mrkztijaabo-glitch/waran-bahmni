@@ -4,7 +4,7 @@ This document describes the reporting and analytics capabilities for the Waran B
 
 ## Dashboards
 
-The analytics module includes a set of dashboards defined under the `/analytics` folder. These JSON definitions can be imported into a business intelligence or dashboarding tool. For example, `overview.json` shows high‑level metrics such as total patients, pending labs, and today's appointments.
+The analytics module includes a set of dashboards defined under the `/analytics` folder. These JSON definitions can be imported into a business intelligence or dashboarding tool. For example, `overview.json` shows high‑level metrics such as total patients, pending labs, and today's appointments. For instance, `usage_metrics.json` provides facility usage metrics such as bed occupancy rate, average length of stay, and patient satisfaction scores.
 
 ## Customising dashboards
 
