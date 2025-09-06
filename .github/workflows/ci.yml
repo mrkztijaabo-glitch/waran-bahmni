@@ -26,6 +26,8 @@ jobs:
 
       - name: Install dependencies
         run: echo "No dependencies to install yet"
+              - name: Run tests
+        run: echo "Running tests..."
 
       - name: Run tests
         run: echo "No tests defined yet"
