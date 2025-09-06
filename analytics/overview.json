@@ -1,0 +1,21 @@
+{
+  "dashboard_name": "Overview",
+  "description": "Sample analytics dashboard showing summary metrics for the HIS.",
+  "widgets": [
+    {
+      "type": "metric",
+      "title": "Total Patients",
+      "dataSource": "openmrs.patient.count"
+    },
+    {
+      "type": "metric",
+      "title": "Pending Lab Tests",
+      "dataSource": "openelis.pending_tests.count"
+    },
+    {
+      "type": "metric",
+      "title": "Today's Appointments",
+      "dataSource": "odoo.appointments.today.count"
+    }
+  ]
+}
