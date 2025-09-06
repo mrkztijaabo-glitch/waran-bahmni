@@ -1,70 +1,49 @@
-version: "3.9"
+version: '3.7'
+
 services:
   openmrs:
     image: bahmni/openmrs:latest
-    container_name: openmrs
+    container_name: bahmni_openmrs
     ports:
       - "8080:8080"
-    env_file: .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-  openelis:
-    image: bahmni/openelis:latest
-    container_name: openelis
-    ports:
-      - "8050:8050"
-    env_file: .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8050"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-  odoo:
-    image: odoo:16
-    container_name: odoo
-    ports:
-      - "8069:8069"
-    env_file: .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8069"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+    environment:
+      - DB_SERVER=mysql
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql:5.7
-    container_name: mysql
-    env_file: .env
-    ports:
-      - "3306:3306"
+    container_name: bahmni_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: openmrs
     volumes:
       - mysql_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
-  postgres:
-    image: postgres:13
-    container_name: postgres
-    env_file: .env
+  bahmni-emr:
+    image: bahmni/bahmni-emr:latest
+    container_name: bahmni_emr
     ports:
-      - "5432:5432"
+      - "8050:80"
+    depends_on:
+      - openmrs
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Africa/Mogadishu
+      - DB_TYPE=sqlite
+      - DB_SQLITE_DATA=/home/node/.n8n/database.sqlite
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - mysql
 
 volumes:
   mysql_data:
-  n8n_data:
-  postgres_data:
+    n8n_data:
+
+    postgres_data:
