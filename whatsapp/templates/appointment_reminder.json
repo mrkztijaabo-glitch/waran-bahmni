@@ -1,0 +1,10 @@
+{
+  "name": "appointment_reminder",
+  "language": "en",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hello {{patient_name}}, your appointment with Dr. {{doctor_name}} is scheduled on {{date}} at {{time}}. Please arrive 15 minutes early."
+    }
+  ]
+}

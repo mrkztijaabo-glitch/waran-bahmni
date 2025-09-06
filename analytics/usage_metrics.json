@@ -1,0 +1,24 @@
+{
+  "dashboard_name": "Usage Metrics",
+  "description": "Tracks facility usage and operational metrics",
+  "widgets": [
+    {
+      "name": "Bed Occupancy Rate",
+      "type": "gauge",
+      "data_source": "openmrs",
+      "query": "SELECT (occupied_beds/total_beds)*100 as occupancy_rate FROM ward_stats"
+    },
+    {
+      "name": "Average Length of Stay (LOS)",
+      "type": "stat",
+      "data_source": "openmrs",
+      "query": "SELECT AVG(discharge_date - admission_date) AS avg_los FROM patient_encounters"
+    },
+    {
+      "name": "Patient Satisfaction Score",
+      "type": "bar",
+      "data_source": "odoo",
+      "query": "SELECT satisfaction_score, COUNT(*) FROM surveys GROUP BY satisfaction_score"
+    }
+  ]
+}
