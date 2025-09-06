@@ -66,4 +66,5 @@ services:
 
 volumes:
   mysql_data:
+  n8n_data:
   postgres_data:
